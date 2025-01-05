@@ -1,0 +1,130 @@
+[
+  {
+    "id": "f3a982c6-df96-4bfc-87f2-bd4f5fdf29b7",
+    "name": "Nutanix",
+    "founders": ["Dheeraj Pandey", "Ajeet Singh", "Mohit Aron"],
+    "founded": 2009,
+    "description": "A cloud computing company specializing in hyper-converged infrastructure solutions.",
+    "link": "https://www.nutanix.com/"
+  },
+  {
+    "id": "b72a0d3f-e42a-4d4b-9378-e8c984fd15ad",
+    "name": "DevRev",
+    "founders": ["Dheeraj Pandey", "Manoj Agarwal"],
+    "founded": 2020,
+    "description": "A customer relationship management (CRM) platform integrating product development and customer support.",
+    "link": "https://www.devrev.com/"
+  },
+  {
+    "id": "e4fe1ca5-4fd5-4a8e-b3fb-dadae4d3923a",
+    "name": "Brillio",
+    "founders": ["Raj Mamodia"],
+    "founded": 2014,
+    "description": "A digital technology consulting firm focusing on data analytics and digital transformation.",
+    "link": "https://www.brillio.com/"
+  },
+  {
+    "id": "7aabb33c-8d7f-47d8-a9bc-6c5354a0739e",
+    "name": "Cloudflare",
+    "founders": ["Matthew Prince", "Lee Holloway", "Michelle Zatlyn"],
+    "founded": 2009,
+    "description": "A web performance and security company providing content delivery network services.",
+    "link": "https://www.cloudflare.com/"
+  },
+  {
+    "id": "b51842c0-ff30-4c84-b9f0-b9c11f168dc5",
+    "name": "Rubrik",
+    "founders": ["Bipul Sinha", "Arvind Jain", "Sanjay Manwani"],
+    "founded": 2014,
+    "description": "A cloud data management company offering data backup and recovery solutions.",
+    "link": "https://www.rubrik.com/"
+  },
+  {
+    "id": "d17b4656-544f-4695-8a16-baa07b64c2d0",
+    "name": "CureMetrix",
+    "founders": ["Rajal Cohen", "Dr. Sandeep Reddy"],
+    "founded": 2014,
+    "description": "A company developing AI-driven mammography software to improve breast cancer detection.",
+    "link": "https://www.curemetrix.com/"
+  },
+  {
+    "id": "7e9c8bda-0a66-47ed-a30b-7b537e5a65d4",
+    "name": "Perplexity",
+    "founders": ["Pranav Rajpurkar", "Anish Athalye"],
+    "founded": 2022,
+    "description": "A company focusing on AI models for high-performance natural language processing and providing tools for large language models (LLMs).",
+    "link": "https://www.perplexity.ai/"
+  },
+  {
+    "id": "cb50cf5d-36d9-41a3-b9c3-8e4ecb6fe6b2",
+    "name": "CloudHealth Technologies",
+    "founders": ["Joe Kinsella", "Bipul Sinha"],
+    "founded": 2012,
+    "description": "A cloud management platform providing visibility and control over public cloud environments.",
+    "link": "https://www.cloudhealthtech.com/"
+  },
+  {
+    "id": "ae75db4d-729d-46a3-8fd9-5422725e0326",
+    "name": "Postman",
+    "founders": ["Abhinav Asthana", "Ankit Sobti", "Abhijit Kane"],
+    "founded": 2014,
+    "description": "A platform for API development, providing tools to build, test, and document APIs.",
+    "link": "https://www.postman.com/"
+  },
+  {
+    "id": "c12816d6-69eb-465a-8cc6-8f3c33d43ae7",
+    "name": "Synthego",
+    "founders": ["Paul Dabrowski", "Vineeta Agarwala", "Dr. Premal Shah"],
+    "founded": 2016,
+    "description": "A gene-editing company focused on CRISPR-based tools for precision medicine and synthetic biology.",
+    "link": "https://www.synthego.com/"
+  },
+  {
+    "id": "d96d6d55-4c73-47c8-96b2-7a1f7b43ed1c",
+    "name": "HighRadius",
+    "founders": ["Sashi Narahari", "Amitava Saha"],
+    "founded": 2006,
+    "description": "A cloud-based fintech company providing AI-powered solutions for finance and accounting.",
+    "link": "https://www.highradius.com/"
+  },
+  {
+    "id": "31a53ba0-1a5f-4b56-98f2-1bb0fd3a3b50",
+    "name": "Concert AI",
+    "founders": ["Sandeep Bhatia"],
+    "founded": 2013,
+    "description": "A company leveraging AI to improve clinical trial efficiency and accelerate drug development.",
+    "link": "https://www.concertai.com/"
+  },
+  {
+    "id": "9a2a9058-61ed-474d-a72d-3fa9a51a0b51",
+    "name": "Eightfold.ai",
+    "founders": ["Ashutosh Garg", "Irfan Basha"],
+    "founded": 2016,
+    "description": "An AI-powered talent intelligence platform to help companies hire, retain, and grow a diverse workforce.",
+    "link": "https://www.eightfold.ai/"
+  },
+  {
+    "id": "9f9eae1d-75d5-4a3c-b1e0-bf7bb2874203",
+    "name": "Moveworks",
+    "founders": ["Bhavin Shah"],
+    "founded": 2016,
+    "description": "An AI-driven support automation platform helping businesses to resolve IT issues through natural language processing.",
+    "link": "https://www.moveworks.com/"
+  },
+  {
+    "id": "19f4c1cc-e86e-42c3-b73f-e1b97c0a7e71",
+    "name": "Uniphore",
+    "founders": ["Umesh Sachdev", "Raghu Ravinutala"],
+    "founded": 2008,
+    "description": "An AI-powered conversational automation platform for enterprises to deliver better customer experiences.",
+    "link": "https://www.uniphore.com/"
+  },
+  {
+    "id": "a11be49e-0623-4088-8649-6c29c9f54888",
+    "name": "H2O.ai",
+    "founders": ["Sri Ambati", "Arno Candel"],
+    "founded": 2012,
+    "description": "A leading AI company offering machine learning and data science platforms for enterprises.",
+    "link": "https://www.h2o.ai/"
+  }
+]
