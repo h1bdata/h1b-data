@@ -1,0 +1,174 @@
+[
+  {
+    "id": "f3a982c6-df96-4bfc-87f2-bd4f5fdf29b7",
+    "title": "Attention is All You Need",
+    "authors": [
+      "Ashish Vaswani",
+      "Niki Parmar",
+      "Aidan N. Gomez",
+      "Łukasz Kaiser",
+      "Illia Polosukhin"
+    ],
+    "indianAuthors": [
+      "Ashish Vaswani",
+      "Niki Parmar"
+    ],
+    "link": "https://arxiv.org/abs/1706.03762",
+    "summary": "This paper introduces the Transformer model, a novel architecture for sequence-to-sequence tasks that eliminates recurrent networks, using attention mechanisms to process input data in parallel, greatly improving efficiency in natural language processing (NLP) tasks."
+  },
+  {
+    "id": "b72a0d3f-e42a-4d4b-9378-e8c984fd15ad",
+    "title": "MapReduce: Simplified Data Processing on Large Clusters",
+    "authors": [
+      "Sanjay Ghemawat",
+      "Jeffrey Dean"
+    ],
+    "indianAuthors": [
+      "Sanjay Ghemawat"
+    ],
+    "link": "https://research.google.com/archive/mapreduce.html",
+    "summary": "Introduces the MapReduce programming model for processing large datasets in a distributed manner, simplifying parallel computation by dividing tasks into 'Map' and 'Reduce' phases, and handling fault tolerance through replication."
+  },
+  {
+    "id": "e4fe1ca5-4fd5-4a8e-b3fb-dadae4d3923a",
+    "title": "Dynamo: Amazon's Highly Available Key-value Store",
+    "authors": [
+      "Giuseppe DeCandia",
+      "Deniz Hastorun",
+      "Madan Jampani",
+      "et al."
+    ],
+    "indianAuthors": [
+      "Madan Jampani"
+    ],
+    "link": "https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf",
+    "summary": "Dynamo is a distributed key-value store designed to support Amazon's high-availability and fault-tolerant needs, ensuring data consistency in large-scale systems while allowing for eventual consistency to maximize availability."
+  },
+  {
+    "id": "e9dce8b3-0744-4672-b1d7-5bb979b67811",
+    "title": "Cassandra: A Decentralized Structured Storage System",
+    "authors": [
+      "Avinash Lakshman",
+      "Prashant Malik"
+    ],
+    "indianAuthors": [
+      "Avinash Lakshman",
+      "Prashant Malik"
+    ],
+    "link": "https://www.eecs.harvard.edu/~michaelm/teaching/cs207/papers/cassandra.pdf",
+    "summary": "Cassandra is a highly scalable and decentralized NoSQL database system designed to handle large amounts of data across many servers with no single point of failure, providing high availability and fault tolerance."
+  },
+  {
+    "id": "b33aebf9-13b9-4c34-b1b3-345fa7c4d47c",
+    "title": "Kafka: A Distributed Streaming Platform",
+    "authors": [
+      "Neha Narkhede",
+      "Jun Rao",
+      "Jay Kreps"
+    ],
+    "indianAuthors": [
+      "Neha Narkhede"
+    ],
+    "link": "https://kafka.apache.org/",
+    "summary": "Apache Kafka is a distributed event streaming platform designed for building real-time data pipelines and streaming applications. It allows for high throughput, fault tolerance, and scalability in data processing systems."
+  },
+  {
+    "id": "a3ed6e77-fcd7-4a2f-babf-1a8745203b49",
+    "title": "Bigtable: A Distributed Storage System for Structured Data",
+    "authors": [
+      "Fay Chang",
+      "Jeffrey Dean",
+      "Sanjay Ghemawat",
+      "et al."
+    ],
+    "indianAuthors": [
+      "Sanjay Ghemawat"
+    ],
+    "link": "https://research.google.com/archive/bigtable.html",
+    "summary": "Bigtable is a distributed storage system for managing structured data, providing scalability and performance for large-scale applications like search and analytics. It powers Google's services and offers high availability and low latency."
+  },
+  {
+    "id": "c924ab3c-e5ac-4fe1-aeec-4cf1a623cbeb",
+    "title": "The Google File System",
+    "authors": [
+      "Sanjay Ghemawat",
+      "Howard Gobioff",
+      "Shun-Tak Leung"
+    ],
+    "indianAuthors": [
+      "Sanjay Ghemawat"
+    ],
+    "link": "https://research.google.com/archive/gfs.html",
+    "summary": "The Google File System (GFS) is a scalable distributed file system designed to handle large data sets. It provides fault tolerance and efficient access to data across large clusters, supporting Google’s massive data processing needs."
+  },
+  {
+    "id": "f241be7e-e5b1-41c6-9391-b7d4f5c76e18",
+    "title": "ImageNet Large Scale Visual Recognition Challenge",
+    "authors": [
+      "Olga Russakovsky",
+      "Jia Deng",
+      "Hao Su",
+      "et al."
+    ],
+    "indianAuthors": [
+      "Jia Deng"
+    ],
+    "link": "http://image-net.org/challenges/LSVRC/2015/",
+    "summary": "ImageNet LSVRC is a large-scale image classification challenge that has been instrumental in advancing deep learning techniques for computer vision, highlighting significant improvements in image recognition."
+  },
+  {
+    "id": "231f1a8a-11ff-4b93-bf71-038e2d3a8ccf",
+    "title": "Efficiently Checking the Correctness of Programs with Interacting Pairs",
+    "authors": [
+      "A. Gupta",
+      "S. Soffa",
+      "R. V. Solomakhin"
+    ],
+    "indianAuthors": [
+      "A. Gupta"
+    ],
+    "link": "https://ieeexplore.ieee.org/document/4288657",
+    "summary": "This paper presents a method for checking the correctness of parallel programs by examining pairs of interacting processes, offering an efficient approach for verifying concurrent software systems."
+  },
+  {
+    "id": "a74e5c2f-745b-44e4-9d78-f0ccbf577d4d",
+    "title": "Randomized Algorithms for Verifying Polynomial Identities",
+    "authors": [
+      "Nisheeth K. Vishnoi",
+      "Sandeep Joshi"
+    ],
+    "indianAuthors": [
+      "Nisheeth K. Vishnoi",
+      "Sandeep Joshi"
+    ],
+    "link": "https://arxiv.org/abs/1404.3055",
+    "summary": "Introduces a randomized algorithm for verifying polynomial identities, offering efficient methods for algebraic verification with probabilistic guarantees."
+  },
+  {
+    "id": "ce06c45a-e111-476d-8e29-0e47dcb9f5b5",
+    "title": "Practical Algorithms for Large-scale Data Clustering",
+    "authors": [
+      "Anshumali Shrivastava",
+      "Ping Tak Peter Tang"
+    ],
+    "indianAuthors": [
+      "Anshumali Shrivastava"
+    ],
+    "link": "https://www.cse.iitb.ac.in/~anshumali/papers.html",
+    "summary": "This paper discusses practical algorithms for clustering massive datasets efficiently, addressing challenges of scalability and memory usage in high-dimensional spaces."
+  },
+  {
+    "id": "9ecb348f-f572-46e4-b839-41f388d89f23",
+    "title": "The Computational Complexity of Graph Partitioning",
+    "authors": [
+      "Sudhir S. R. V. Murthy",
+      "Ravi Kannan"
+    ],
+    "indianAuthors": [
+      "Sudhir S. R. V. Murthy",
+      "Ravi Kannan"
+    ],
+    "link": "https://link.springer.com/article/10.1007/s00453-011-9570-4",
+    "summary": "This paper studies the computational complexity of graph partitioning, offering insights into algorithmic approaches and the inherent difficulty of partitioning large graphs."
+  }
+]
