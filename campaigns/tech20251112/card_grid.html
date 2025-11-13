@@ -360,6 +360,7 @@
 
 
 
+
     </style>
 </head>
 <body>
@@ -476,34 +477,12 @@
                   filter: drop-shadow(0 0 4px rgba(255,240,200,0.4));
                   border-radius:2px;
                 "></div>
-                <!--<svg width="520" height="40" viewBox="0 0 520 40"-->
-                <!--     xmlns="http://www.w3.org/2000/svg"-->
-                <!--     style="margin-top:14px; display:block; margin-left:auto; margin-right:auto;">-->
-                <!--  <path d="M10 30-->
-                <!--           C120 5, 240 5, 260 20-->
-                <!--           C280 5, 400 5, 510 30"-->
-                <!--        stroke="#fbbf24" stroke-width="3" fill="none" stroke-linecap="round"/>-->
-                <!--</svg>-->
-
-
-                <!--                <svg width="600" height="60" viewBox="0 0 600 60"-->
-                <!--     xmlns="http://www.w3.org/2000/svg"-->
-                <!--     style="margin-top:18px; display:block; margin-left:auto; margin-right:auto;">-->
-                <!--  <path d="-->
-                <!--      M10 45-->
-                <!--      C40 10, 110 10, 150 35-->
-                <!--      C190 60, 260 60, 300 30-->
-                <!--      C340 60, 410 60, 450 35-->
-                <!--      C490 10, 560 10, 590 45"-->
-                <!--        stroke="#fbbf24" stroke-width="3" fill="none" stroke-linecap="round"/>-->
-                <!--</svg>-->
-
                 <div class="grid-header-subtitle"
                      style="max-width:780px; margin:0 auto; line-height:1.6; color: #c7bfb6;
               font-size:1.05rem; font-weight:400;">
-                    Many of the advances in modern computing grew from the work of immigrant Indian engineers and researchers who came to the United States and found an environment that encouraged experimentation, collaboration, and ambitious ideas.
-<br>Working alongside their American colleagues in labs, universities, and companies, they helped shape progress in distributed systems, machine learning, generative AI, and robotics.
-<br>This timeline highlights those contributions - from first-generation Indian immigrants to second-generation Indian American innovators - and the shared efforts that moved these technologies forward.
+                    This timeline reflects the contributions of first-generation Indian immigrants and second-generation Indian-origin Americans to the U.S. technology landscape.
+                    <br>The cards highlight a selection of Indian-origin innovators, with further context to follow.
+                    <br>It is not intended to be a complete list.
                 </div>
                 <div style="
                         font-size:1.2rem;
@@ -519,7 +498,19 @@
             <div class="card-grid" id="cardGrid">
                 <!-- Cards injected here -->
             </div>
+            <div style="
+  margin-top:2.5rem;
+  text-align:right;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size:1rem;
+  color:#c7bfb6;
+  opacity:0.85;
+">
+            Indian American Advocacy Council
+        </div>
         </section>
+
+
     </main>
 </div>
 
@@ -623,7 +614,7 @@ function loadDemoCards() {
       title: 'Amazon Dynamo',
       people: 'Avinash Lakshman, Swaminathan Sivasubramanian',
       org: 'Amazon',
-      impact: 'Key-value store that formalized eventual consistency, tunable read/write quorums, and partition tolerance under the CAP theorem; foundation for DynamoDB and Cassandra.'
+      impact: 'Formalized eventual consistency, tunable read/write quorums, and partition tolerance under the CAP theorem; foundation for DynamoDB and Cassandra.'
     },
     {
       year: 2008,
@@ -758,6 +749,7 @@ function loadDemoCards() {
   // Initial setup
   updateGridColumns();
   renderCards();
+
 
 
 
