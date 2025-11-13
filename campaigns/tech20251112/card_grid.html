@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Card Grid Builder</title>
+    <style>
+    :root {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      border-bottom: 1px solid #1f2933;
+      padding: 1.25rem 2rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    header p {
+      margin: 0.25rem 0 0;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    main {
+      flex: 1;
+      padding: 1.5rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .controls-layout {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .card-form {
+      background: #020617;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem 1.25rem;
+      border: 1px solid #111827;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .card-form h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1rem;
+      color: #e5e7eb;
+    }
+
+    .field-row {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+      flex: 1;
+    }
+
+    label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+    }
+
+    input[type="text"],
+    textarea,
+    select,
+    input[type="number"] {
+      border-radius: 0.5rem;
+      border: 1px solid #111827;
+      background: #020617;
+      color: #e5e7eb;
+      padding: 0.4rem 0.6rem;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+      max-height: 120px;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #f97316;
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.4);
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 0.5rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border-radius: 999px;
+      border: none;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: #0b1120;
+      font-weight: 600;
+    }
+
+    .btn-secondary {
+      background: #020617;
+      border: 1px solid #1f2937;
+      color: #e5e7eb;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px dashed #4b5563;
+      color: #9ca3af;
+    }
+
+    .grid-controls {
+      flex: 1;
+      min-width: 220px;
+      max-width: 420px;
+      background: #020617;
+      border-radius: 0.75rem;
+      padding: 0.9rem 1rem 1.1rem;
+      border: 1px solid #111827;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .grid-controls h3 {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .grid-controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .grid-controls-row .form-group {
+      margin-bottom: 0;
+    }
+
+    .grid-controls-row input[type="number"] {
+      max-width: 80px;
+    }
+
+    .grid-controls .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.35rem;
+    }
+
+    .grid-controls small {
+      color: #9ca3af;
+      font-size: 0.75rem;
+    }
+
+    /* Capture area: header + grid */
+    #captureArea {
+      margin-top: 0.5rem;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.16), transparent 50%),
+                  radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.16), transparent 55%),
+                  #020617;
+      border: 1px solid #111827;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+    }
+
+    .grid-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid #1f2937;
+      padding-bottom: 0.5rem;
+    }
+
+    .grid-header-title {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #fbbf24;
+    }
+
+    .grid-header-subtitle {
+      font-size: 0.82rem;
+      color: #9ca3af;
+      max-width: 520px;
+    }
+
+    .grid-meta {
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr)); /* default, updated by JS */
+    }
+
+    .card {
+      padding: 0.75rem 0.8rem;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      background: #020617;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.9);
+    }
+
+    .card-title {
+    color: #d88f3c;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+    color: #d9d7d3;
+    font-weight: 500;
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    .card-meta {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .card-body {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+    }
+
+    .card-tag {
+      margin-top: 0.3rem;
+      align-self: flex-start;
+      border-radius: 999px;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: #cbd5f5;
+    }
+
+    .card-link {
+      font-size: 0.75rem;
+      color: #93c5fd;
+      margin-top: 0.25rem;
+      text-decoration: none;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Themes */
+    .theme-orange {
+      border-color: rgba(248, 113, 22, 0.7);
+      background: radial-gradient(circle at top left, rgba(248, 113, 22, 0.3), rgba(15, 23, 42, 0.95));
+    }
+
+    .theme-blue {
+      border-color: rgba(59, 130, 246, 0.7);
+      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.25), rgba(15, 23, 42, 0.95));
+    }
+
+    .theme-light {
+      border-color: rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.12), rgba(15, 23, 42, 0.98));
+    }
+
+    .theme-dark {
+      border-color: rgba(15, 23, 42, 0.9);
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 1));
+    }
+
+    @media (max-width: 900px) {
+      header,
+      main {
+        padding-inline: 1.25rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .card-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+    }
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="app">
+    <header>
+        <h1>Card Grid Builder</h1>
+        <p>Create a grid of highlight cards, tweak layout and theme, then export as an image.</p>
+    </header>
+
+    <main>
+        <div class="controls-layout">
+            <!-- Card form -->
+            <form class="card-form" id="cardForm">
+                <h2>Add a card</h2>
+
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input id="title" type="text" placeholder="Pagerank" required/>
+                </div>
+
+                <div class="field-row">
+                    <div class="form-group">
+                        <label for="subtitle">Subtitle / Person</label>
+                        <input id="subtitle" type="text" placeholder="Prof. Rajeev Motwani"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="meta">Org / Era</label>
+                        <input id="meta" type="text" placeholder="Stanford, 1998"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Short description</label>
+                    <textarea id="description"
+                              placeholder="Algorithmic foundations that shaped Google’s web search ranking."></textarea>
+                </div>
+
+                <div class="field-row">
+                    <div class="form-group">
+                        <label for="tag">Tag</label>
+                        <input id="tag" type="text" placeholder="Search, Algorithms"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="link">Link (optional)</label>
+                        <input id="link" type="text" placeholder="https://..."/>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Add card</button>
+                    <button type="button" id="clearCards" class="btn-secondary">Clear all</button>
+                </div>
+            </form>
+
+            <!-- Grid / layout controls -->
+            <section class="grid-controls">
+                <h3>Layout & theme</h3>
+
+                <div class="grid-controls-row">
+                    <div class="form-group">
+                        <label for="columns">Columns</label>
+                        <input id="columns" type="number" min="1" max="6" value="4"/>
+                        <small>1 to 6 columns</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="theme">Card theme</label>
+                        <select id="theme">
+                            <option value="orange">Orange</option>
+                            <option value="blue">Blue</option>
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                        </select>
+                        <small>Applies to new cards</small>
+                    </div>
+                </div>
+
+                <div class="button-row">
+                    <button type="button" id="loadDemo" class="btn-secondary">
+                        Load demo cards
+                    </button>
+                    <button type="button" id="downloadImage" class="btn-primary">
+                        Download grid as image
+                    </button>
+                </div>
+
+                <small>
+                    Tip, tweak the column count and theme, then export the header plus grid as a PNG for slides or
+                    posters.
+                </small>
+            </section>
+        </div>
+
+        <!-- Capture area = header + grid -->
+        <section id="captureArea">
+            <div class="grid-header"
+                 style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:0.9rem;
+            font-family: Georgia, 'Times New Roman', serif;">
+
+                <div class="grid-header-title"
+                     style="font-size:1.6rem; font-weight:700; color:#fbbf24; letter-spacing:0.02em;
+              text-transform:none; margin:0 auto; line-height:1.3;">
+                    A Shared Frontier
+                </div>
+                <div style="
+                  width:50%;
+                  height:2px;
+                  margin:14px auto 0 auto;
+                  background: linear-gradient(to right,
+                    transparent,
+                    #f4e9d8,
+                    transparent
+                  );
+                  filter: drop-shadow(0 0 4px rgba(255,240,200,0.4));
+                  border-radius:2px;
+                "></div>
+                <!--<svg width="520" height="40" viewBox="0 0 520 40"-->
+                <!--     xmlns="http://www.w3.org/2000/svg"-->
+                <!--     style="margin-top:14px; display:block; margin-left:auto; margin-right:auto;">-->
+                <!--  <path d="M10 30-->
+                <!--           C120 5, 240 5, 260 20-->
+                <!--           C280 5, 400 5, 510 30"-->
+                <!--        stroke="#fbbf24" stroke-width="3" fill="none" stroke-linecap="round"/>-->
+                <!--</svg>-->
+
+
+                <!--                <svg width="600" height="60" viewBox="0 0 600 60"-->
+                <!--     xmlns="http://www.w3.org/2000/svg"-->
+                <!--     style="margin-top:18px; display:block; margin-left:auto; margin-right:auto;">-->
+                <!--  <path d="-->
+                <!--      M10 45-->
+                <!--      C40 10, 110 10, 150 35-->
+                <!--      C190 60, 260 60, 300 30-->
+                <!--      C340 60, 410 60, 450 35-->
+                <!--      C490 10, 560 10, 590 45"-->
+                <!--        stroke="#fbbf24" stroke-width="3" fill="none" stroke-linecap="round"/>-->
+                <!--</svg>-->
+
+                <div class="grid-header-subtitle"
+                     style="max-width:780px; margin:0 auto; line-height:1.6; color: #c7bfb6;
+              font-size:1.05rem; font-weight:400;">
+                    Many of the advances in modern computing grew from the work of immigrant Indian engineers and researchers who came to the United States and found an environment that encouraged experimentation, collaboration, and ambitious ideas.
+<br>Working alongside their American colleagues in labs, universities, and companies, they helped shape progress in distributed systems, machine learning, generative AI, and robotics.
+<br>This timeline highlights those contributions - from first-generation Indian immigrants to second-generation Indian American innovators - and the shared efforts that moved these technologies forward.
+                </div>
+                <div style="
+                        font-size:1.2rem;
+                        margin-top:0.8rem;
+                        color:#fbbf24;
+                    ">
+                    ❧ ❦ ❧
+                </div>
+
+
+            </div>
+
+            <div class="card-grid" id="cardGrid">
+                <!-- Cards injected here -->
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- html2canvas for export -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+  const cardForm = document.getElementById('cardForm');
+  const columnsInput = document.getElementById('columns');
+  const themeSelect = document.getElementById('theme');
+  const cardGrid = document.getElementById('cardGrid');
+  const clearCardsBtn = document.getElementById('clearCards');
+  const loadDemoBtn = document.getElementById('loadDemo');
+  const downloadBtn = document.getElementById('downloadImage');
+  const captureArea = document.getElementById('captureArea');
+
+  let cards = [];
+
+  function updateGridColumns() {
+    const value = parseInt(columnsInput.value, 10);
+    const cols = isNaN(value) ? 4 : Math.min(6, Math.max(1, value));
+    columnsInput.value = cols;
+    cardGrid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+  }
+
+  function renderCards() {
+    cardGrid.innerHTML = '';
+    cards.forEach(card => {
+      const el = document.createElement('article');
+      el.className = `card theme-${card.theme}`;
+
+      el.innerHTML = `
+        <div class="card-title">${card.title}</div>
+        ${card.subtitle ? `<div class="card-subtitle">${card.subtitle}</div>` : ''}
+        ${card.meta ? `<div class="card-meta">${card.meta}</div>` : ''}
+        ${card.description ? `<div class="card-body">${card.description}</div>` : ''}
+        ${card.tag ? `<div class="card-tag">${card.tag}</div>` : ''}
+        ${card.link ? `<a class="card-link" href="${card.link}" target="_blank" rel="noopener noreferrer">Learn more</a>` : ''}
+      `;
+
+      cardGrid.appendChild(el);
+    });
+
+  }
+
+  function addCardFromForm() {
+    const title = document.getElementById('title').value.trim();
+    const subtitle = document.getElementById('subtitle').value.trim();
+    const meta = document.getElementById('meta').value.trim();
+    const description = document.getElementById('description').value.trim();
+    const tag = document.getElementById('tag').value.trim();
+    const link = document.getElementById('link').value.trim();
+    const theme = themeSelect.value || 'orange';
+
+    if (!title) return;
+
+    cards.push({ title, subtitle, meta, description, tag, link, theme });
+    renderCards();
+  }
+
+  // Add this helper if you don't already have it
+function clearCards() {
+  cards = [];
+  renderCards();
+}
+
+// Replace your existing loadDemoCards (or loadDemo) with this:
+function loadDemoCards() {
+  clearCards();
+
+  const demo = [
+    {
+      year: 1982,
+      title: 'Sun Microsystems',
+      people: 'Vinod Khosla',
+      org: 'Sun Microsystems',
+      impact: 'Co-founded Sun; catalyzed Unix workstations, the Java ecosystem, and network computing.'
+    },
+    {
+      year: 1998,
+      title: 'Google Search',
+      people: 'Rajeev Motwani',
+      org: 'Stanford University / Google',
+      impact: 'Mathematical foundation for Google search ranking; transformed web relevance at scale.'
+    },
+    {
+      year: 2002,
+      title: 'Google News',
+      people: 'Krishna Bharat',
+      org: 'Google',
+      impact: 'Automated ML-based news clustering; precursor to personalized feeds.'
+    },
+    {
+      year: 2003,
+      title: 'Google File System',
+      people: 'Sanjay Ghemawat',
+      org: 'Google',
+      impact: 'Fault-tolerant distributed storage; inspired Hadoop HDFS and the big data era.'
+    },
+    {
+      year: 2007,
+      title: 'Amazon Dynamo',
+      people: 'Avinash Lakshman, Swaminathan Sivasubramanian',
+      org: 'Amazon',
+      impact: 'Key-value store that formalized eventual consistency, tunable read/write quorums, and partition tolerance under the CAP theorem; foundation for DynamoDB and Cassandra.'
+    },
+    {
+      year: 2008,
+      title: 'Apache Cassandra',
+      people: 'Avinash Lakshman, Prashant Malik',
+      org: 'Facebook',
+      impact: 'Decentralized NoSQL DB; powers Netflix, Apple iCloud, and massive-scale apps.'
+    },
+    {
+      year: 2009,
+      title: 'Apache Hive',
+      people: 'Ashish Thusoo, Joydeep Sen Sarma',
+      org: 'Facebook',
+      impact: 'SQL-on-Hadoop; enabled petabyte-scale analytics for non-engineers.'
+    },
+    {
+      year: 2011,
+      title: 'Apache Kafka',
+      people: 'Neha Narkhede',
+      org: 'LinkedIn',
+      impact: 'Distributed event log; backbone of real-time data pipelines globally.'
+    },
+    {
+      year: 2015,
+      title: 'gRPC',
+      people: 'Varun Talwar',
+      org: 'Google',
+      impact: 'Modern RPC over HTTP/2; standard for microservices and APIs.'
+    },
+    {
+      year: 2015,
+      title: 'TensorFlow',
+      people: 'Rajat Monga',
+      org: 'Google Brain',
+      impact: 'End-to-end deep learning framework; accelerated global ML adoption.'
+    },
+    {
+      year: 2017,
+      title: 'Transformer Architecture',
+      people: 'Ashish Vaswani, Niki Parmar',
+      org: 'Google Brain',
+      impact: 'Self-attention breakthrough; foundation of modern large language models.'
+    },
+    {
+      year: 2017,
+      title: 'PyTorch',
+      people: 'Soumith Chintala',
+      org: 'Meta AI',
+      impact: 'Pythonic dynamic neural framework; became the default for ML research.'
+    },
+    {
+      year: 2022,
+      title: 'Perplexity AI',
+      people: 'Aravind Srinivas',
+      org: 'Perplexity AI',
+      impact: 'LLM + retrieval with citations; redefined AI-assisted search experiences.'
+    },
+    {
+      year: 2023,
+      title: 'Databricks GenAI Stack',
+      people: 'Naveen Rao',
+      org: 'Databricks',
+      impact: 'Unified platform for training, tuning, and serving LLMs at scale.'
+    },
+    {
+      year: 2023,
+      title: 'Cursor AI',
+      people: 'Aman Raj',
+      org: 'Cursor',
+      impact: 'AI-powered coding interface'
+    },
+    {
+      year: 2024,
+      title: 'Tesla Autopilot',
+      people: 'Ashok Elluswamy',
+      org: 'Tesla',
+      impact: 'End-to-end vision system for autonomous driving; major milestone in applied robotics AI.'
+    }
+  ];
+
+  const demoTheme = themeSelect.value || 'orange';
+
+  // Map into the card structure used by renderCards()
+  cards = demo.map(d => ({
+    title: d.title,
+    subtitle: d.people,
+    meta: `${d.org} • ${d.year}`,
+    description: d.impact,
+    tag: '',          // or e.g. `Year ${d.year}` if you want a visible tag
+    link: '',
+    theme: demoTheme
+  }));
+
+  renderCards();
+}
+
+  async function downloadGridAsImage() {
+    if (typeof html2canvas === 'undefined') {
+      alert('html2canvas failed to load. Check your network and try again.');
+      return;
+    }
+
+    // Small timeout lets fonts/layout settle
+    await new Promise(r => setTimeout(r, 50));
+
+    html2canvas(captureArea, { scale: 2, useCORS: true }).then(canvas => {
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL('image/png');
+      link.download = 'card-grid.png';
+      link.click();
+    });
+  }
+
+  // Event wiring
+  cardForm.addEventListener('submit', e => {
+    e.preventDefault();
+    addCardFromForm();
+    cardForm.reset();
+  });
+
+  clearCardsBtn.addEventListener('click', () => {
+    cards = [];
+    renderCards();
+  });
+
+  columnsInput.addEventListener('input', updateGridColumns);
+  columnsInput.addEventListener('change', updateGridColumns);
+
+  loadDemoBtn.addEventListener('click', loadDemoCards);
+  downloadBtn.addEventListener('click', downloadGridAsImage);
+
+  // Initial setup
+  updateGridColumns();
+  renderCards();
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
